@@ -1,0 +1,138 @@
+body {
+    background: black;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+
+nav {
+    background: #272727;
+    height: 10%;
+    position: fixed;
+    top: 1em;
+    border: none;
+    border-radius: 0%;
+}
+a {
+    color:  white;
+}
+.flex {
+    display: flex;
+}
+.justify-center {
+    justify-content: center;
+}
+.align-center {
+    align-items: center;
+}
+.column {
+    flex-direction: column;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon-container {
+    margin-right: 40px;
+}
+.icon-container > * {
+    margin-left: 1rem;
+}
+
+main {
+    height: 100vh;
+}
+#index-middle-container > img{
+    margin-top: 10%;
+}
+#play-button {
+    position: absolute;
+    top: 43%;
+    cursor: pointer;
+}
+
+/* hover effects */
+#index-middle-logo{
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	
+}
+#index-middle-logo:hover{
+	
+}
+
+ol,ul {
+    margin-top: 0 !important;
+}
+
+.ul-icon {
+    display: flex;
+  }
+  
+  .ul-icon li {
+    list-style: none;
+    margin-top: 5%;
+  }
+  
+  .ul-icon li a {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 35px;
+    margin: 0 10px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+  }
+  
+  .ul-icon li a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+  }
+  
+  .ul-icon li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+  }
+  
+  .ul-icon li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+  }
+  
+  .ul-icon li a:hover:before {
+    top: 0;
+  }
+  
+  .ul-icon li:nth-child(1) a:before{
+    background: #3b5999;
+  }
+  
+  .ul-icon li:nth-child(2) a:before{
+    background: #55acee;
+  }
+  
+  .ul-icon li:nth-child(3) a:before {
+    background: #dd114e;
+  }
+  
+  .ul-icon li:nth-child(4) a:before {
+    background: #dd4b39;
+  }
