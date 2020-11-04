@@ -87,11 +87,11 @@
         // Define the Spotify Connect device, getOAuthToken has an actual token 
         // hardcoded for the sake of simplicity
         var player = new Spotify.Player({
-            name: 'A Spotify Web SDK Player',
+            name: 'Roger ',
             getOAuthToken: callback => {
-                callback('BQAJw3Yokn_kObpoTwgA9Wt_cJ_pyFMfE2R4W9aBMJKkTzqlRDqOJjHbEH4yDWqCPN804ESnsDXQ4UqAvfDIRhF2xRDZXpLkMh0Tt8_DWG00Quez4NJ3K3juh_zytU98ypHLl8e3Q24XXx7DVgQ5z3aBgT5bSyjyzzCt5sifOJK2v0goQ3M');
+                callback('BQDB0da-VolgZT4GLpdOga_phUQNNU2bwqtC-gLBTxfpJgWWIhi6q5UoekgGUK3vc6ml4aHzO5mktHEAKBWNg2KZSJSnXgPl5MxNbVm1ibLo7nrnnyK1PgoJNZ8xeKaxAp_ywYv1J9tyICouqiMVReUIVkT6lFH-Ufm8');
             },
-            volume: 0.1
+            volume: 0.5
         });
 
         // Called when connected to the player created beforehand successfully
@@ -125,7 +125,7 @@
 
             play({
                 playerInstance: player,
-                spotify_uri: 'spotify:track:7xGfFoTpQ2E7fRF5lN10tr',
+                spotify_uri: 'spotify:track:2VxeLyX666F8uXCJ0dZF8B',
             });
         });
 
@@ -134,6 +134,7 @@
         // Connect to the player created beforehand, this is equivalent to 
         // creating a new device which will be visible for Spotify Connect
         player.connect();
+
     };
 </script>
 
