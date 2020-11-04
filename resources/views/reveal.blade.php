@@ -33,6 +33,8 @@
         </div>
         @endforeach
     </div>
+    <div class="w3-left w3-hover-text-khaki" id="btn-forward" onclick="plusDivs(-1)">&#10094;</div>
+    <div class="w3-right w3-hover-text-khaki" id="btn-previous" onclick="plusDivs(1)">&#10095;</div>
     @endsection
 
 

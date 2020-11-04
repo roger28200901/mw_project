@@ -23,14 +23,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
 
-    <!-- Slick -->
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <!-- Add the slick-theme.css if you want default styling -->
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- Animation Master For Transition -->
+    <!-- animsition.css -->
+    <link rel="stylesheet" href="{{ asset('animation-master/dist/css/animsition.min.css') }}">
+    <!-- animsition.js -->
+    <script src="{{ asset('animation-master/dist/js/animsition.min.js') }}"></script>
 
-    <!-- Styles -->
+
+    <!-- App Styles -->
     <link rel="stylesheet" href="{{ asset('style/app.css') }}">
 
 
@@ -41,11 +41,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search fill">
         <div class="nav-container">
             <!-- left side -->
             <div class="flex align-center">
-                <img src="{{ asset('img/MW logo@2x.png') }}" alt="">
+                <img src="{{ asset('img/MW logo@2x.png') }}" alt="" onclick="location.href='{{ route('index') }}'">
                 <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button> -->
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation">
@@ -69,7 +69,7 @@
                         <label for="search-field" style="margin-right: 1rem;">
                             <i class="fa fa-search"></i>
                         </label>
-                        <input class="form-control search-field" type="search" name="search" id="search-field"></div>
+                        <input class="form-control search-field" type="search" name="search" placeholder="Search..." id="search-field"></div>
                 </form>
             </div>
             <!-- right side -->
@@ -87,12 +87,12 @@
                 </li>
                 <li class="li-icon">
                     <a href="#">
-                        <i class="fab fa-linkedin-in icon"></i>
+                        <i class="fab fa-instagram icon"></i>
                     </a>
                 </li>
                 <li class="li-icon">
                     <a href="#">
-                        <i class="fab fa-google-plus-g icon"></i>
+                        <i class="fab fa-google icon"></i>
                     </a>
                 </li>
             </ul>
@@ -101,10 +101,38 @@
         </div>
     </nav>
 
-    <main>
+    <main class="animsition" data-animsition-in-class="fade-in-right-lg" data-animsition-in-duration="1000" data-animsition-out-class="fade-out-right-lg" data-animsition-out-duration="800">
+
         @yield('main')
     </main>
-
+    <script>
+        $(document).ready(function() {
+            $(".animsition").animsition({
+                inClass: 'fade-in-right-lg',
+                outClass: 'fade-out-right-lg',
+                inDuration: 1500,
+                outDuration: 800,
+                linkElement: '.animsition-link',
+                // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+                loading: true,
+                loadingParentElement: 'body', //animsition wrapper element
+                loadingClass: 'animsition-loading',
+                loadingInner: '', // e.g '<img src="loading.svg" />'
+                timeout: false,
+                timeoutCountdown: 5000,
+                onLoadEvent: true,
+                browser: ['animation-duration', '-webkit-animation-duration'],
+                // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+                // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+                overlay: false,
+                overlayClass: 'animsition-overlay-slide',
+                overlayParentElement: 'body',
+                transition: function(url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    </script>
     @yield('script')
 </body>
 

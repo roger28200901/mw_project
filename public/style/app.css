@@ -32,6 +32,79 @@ nav {
     border-radius: 0%;
 }
 
+
+/* Navbar animation stroke */
+
+
+/* stroke */
+
+.stroke ul li a,
+nav.fill ul li a {
+    position: relative;
+}
+
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #aaa;
+    height: 1px;
+}
+
+nav.stroke ul li a:hover:after {
+    width: 100%;
+}
+
+nav.fill ul li a {
+    transition: all 2s;
+}
+
+nav.fill ul li a:after {
+    text-align: left;
+    content: '.';
+    margin: 0;
+    opacity: 0;
+}
+
+nav.fill ul li a:hover {
+    color: black;
+    z-index: 1;
+}
+
+nav.fill ul li a:hover:after {
+    z-index: -10;
+    animation: fill 1s forwards;
+    -webkit-animation: fill 1s forwards;
+    -moz-animation: fill 1s forwards;
+    opacity: 1;
+}
+
+
+/* Keyframes */
+
+@-webkit-keyframes fill {
+    0% {
+        width: 0%;
+        height: 1px;
+    }
+    50% {
+        width: 100%;
+        height: 1px;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        background: white;
+        color: black;
+    }
+}
+
 a {
     color: white;
 }
@@ -76,7 +149,7 @@ main {
 
 #play-button {
     position: absolute;
-    top: 284px;
+    top: 188px;
     cursor: pointer;
 }
 
@@ -161,7 +234,7 @@ ul {
 }
 
 .ul-icon li:nth-child(4) a:before {
-    background: #dd4b39;
+    background: #4b4545;
 }
 
 
@@ -268,4 +341,19 @@ ul {
     position: absolute;
     width: 100%;
     overflow: hidden;
+}
+
+
+/* arrow btn */
+
+#btn-forward {
+    position: fixed;
+    right: 0;
+    top: 50%;
+}
+
+#btn-previous {
+    position: fixed;
+    top: 50%;
+    left: 0%;
 }
