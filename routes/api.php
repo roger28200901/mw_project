@@ -22,3 +22,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('searchTracks/{query_string?}', 'SpotifyController@searchTracks');
 Route::get('searchAlbums/{query_string?}', 'SpotifyController@searchAlbums');
+
+
+Route::get('searchItems/{keyword}/{type}', 'SpotifyController@serachItems');

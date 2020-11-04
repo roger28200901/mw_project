@@ -29,7 +29,7 @@ return [
     'default_config' => [
         'country' => 'US',
         'locale' => 'US',
-        'market' => 'US',
+        'market' => null,
     ],
 
 ];

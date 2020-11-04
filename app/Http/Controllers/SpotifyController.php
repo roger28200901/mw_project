@@ -8,9 +8,9 @@ use Aerni\Spotify\Spotify;
 
 class SpotifyController extends Controller
 {
-    //
     public function searchTracks(string $query_string = "")
     {
+
         $defaultConfig =
             [
                 'country' => 'US',
@@ -49,6 +49,19 @@ class SpotifyController extends Controller
             ];
         $spotify = new Spotify($defaultConfig);
 
-        return $spotify->searchAlbums($query_string)->market('US')->get();
+        return $spotify->searchAlbums($query_string)->get();
+    }
+
+    public function serachItems(string $query_string, string $type)
+    {
+        $defaultConfig =
+            [
+                'country' => 'US',
+                'locale' => 'US',
+                'market' => 'US',
+            ];
+        $spotify = new Spotify($defaultConfig);
+
+        return $spotify->searchItems($query_string, $type)->get();
     }
 }
