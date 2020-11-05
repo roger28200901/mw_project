@@ -18,3 +18,8 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('reveal', 'RevealController@index');
+Route::get('playSong/{id}', 'RevealController@playSongPage');
+
+
+// Test Spotify 
+// Route::get('')

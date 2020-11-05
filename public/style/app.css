@@ -244,7 +244,7 @@ ul {
     display: grid;
     grid-template-columns: 300px;
     grid-template-rows: 250px 170px 80px;
-    grid-template-areas: "image" "text" "stats";
+    grid-template-areas: "image""text""stats";
     border-radius: 18px;
     background: black;
     box-shadow: 5px 5px 15px rgba(252, 250, 250, 0.9);
@@ -348,12 +348,87 @@ ul {
 
 #btn-forward {
     position: fixed;
-    right: 0;
+    right: 0%;
     top: 50%;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 #btn-previous {
     position: fixed;
     top: 50%;
     left: 0%;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.song-image {
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.song-container {
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 60%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding-left: 1%;
+    padding-right: 1%;
+    height: 10rem;
+    width: 100%;
+    background: #272727;
+    font-size: 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-left {
+    width: 30%;
+}
+
+.footer-right {
+    width: 30%;
+}
+
+.footer-message {
+    margin-left: 3%;
+}
+
+.footer-message p:nth-child(1) {
+    font-size: 18px;
+}
+
+.footer-message p:nth-child(2) {
+    color: gray;
+}
+
+.footer-right>* {
+    padding-left: 5%;
+}
+
+
+/* To fix the margin */
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+    margin-top: 1% !important;
+}
+
+.page-link {
+    color: white !important;
+    background: black !important;
+}
+
+img {
+    cursor: pointer;
 }

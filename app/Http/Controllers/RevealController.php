@@ -15,4 +15,10 @@ class RevealController extends Controller
         $array = $spotifyController->searchTracks("lady gaga");
         return view('reveal')->with('datas', $array);
     }
+    public function playSongPage($id)
+    {
+        $spotifyController = new SpotifyController();
+        $data = $spotifyController->searchTrack($id);
+        return view('playSong')->with('data', $data);
+    }
 }

@@ -13,7 +13,7 @@
     @section('main')
     <div id="card-container" class="container flex">
         @foreach($datas as $data)
-        <div class="card">
+        <div class="card" onclick=location.href="{{ url('playSong/'.$data['id']) }}">
             <div class="card-image">
                 <img src="{{$data['image']}}" width="300" alt="">
             </div>
@@ -33,8 +33,9 @@
         </div>
         @endforeach
     </div>
-    <div class="w3-left w3-hover-text-khaki" id="btn-forward" onclick="plusDivs(-1)">&#10094;</div>
-    <div class="w3-right w3-hover-text-khaki" id="btn-previous" onclick="plusDivs(1)">&#10095;</div>
+    <div class="w3-right w3-hover-text-khaki" id="btn-previous">&#10094;</div>
+    <div class="w3-left w3-hover-text-khaki" id="btn-forward">&#10095;</div>
+
     @endsection
 
 
@@ -44,20 +45,27 @@
 @section('script')
 <script>
     $(document).ready(function() {
-        var startX = null;
-        var left = 0;
+        var length = parseInt("{{ count($datas) }}");
+        var range = 0;
+        if (length < 4) range = 0
+        else range = -((length - 4) * 360)
 
-        $('#card-container').on('dragstart', function() {
-            startX = event.screenX;
-        })
-        $('#card-container').on('dragover', function() {
-            if (left <= 0) {
-                left = 1;
-                return false;
-            } else {
-                left += event.screenX - startX;
-                console.log(left);
-                $('.card').css('left', left + 'px');
+        $('#btn-forward').on('click', function() {
+            let leftVal = parseInt($('.card').css('left').split('px')[0]);
+            if (leftVal - 360 >= range) {
+                leftVal -= 360;
+                $('.card').animate({
+                    left: leftVal + 'px'
+                }, 100);
+            }
+        });
+        $('#btn-previous').on('click', function() {
+            let leftVal = parseInt($('.card').css('left').split('px')[0]);
+            if (leftVal + 360 <= 0) {
+                leftVal += 360;
+                $('.card').animate({
+                    left: leftVal + 'px'
+                }, 100);
             }
         });
     });
