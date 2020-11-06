@@ -48,6 +48,19 @@
             </table>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "pagingType": "full_numbers",
+                "scrollCollapse": true,
+                "scrollY": "250px",
+            });
+        });
+    </script>
+    @endsection
+
+    @section('footer')
     <footer>
         <div class="footer-left flex">
             <div class="footer-image">
@@ -67,25 +80,13 @@
             <img src="{{ asset('img/repeat.@2x.png') }}" id="btn-repeat" alt="">
         </div>
     </footer>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable({
-                "pagingType": "full_numbers",
-                "scrollCollapse": true,
-                "scrollY": "250px",
-            });
-        });
-    </script>
     @endsection
-
-
 </body>
 @php
 $album_items = json_encode($data['album_items']);
 @endphp
 @section('script')
 <!-- Scripts -->
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
     $(document).ready(function() {
         // get now uri
@@ -102,9 +103,9 @@ $album_items = json_encode($data['album_items']);
             var player = new Spotify.Player({
                 name: 'Roger ',
                 getOAuthToken: callback => {
-                    callback('BQDsnj6iT-Bp8Ns7PPrEKZrL5_xpkekm1g0VpJeUvSeF3dwk0IdFiHJhQbJw0lx038moIXwn9nbltC1N7aVNpNIaUrJkvdt7d84eCSPfslYv8tjqeizNLnK81ap2Gqas6Ty5HVlQ_RY962sosymx6QPM_EPYwrOXIHZ4');
+                    callback('BQCUnEcUidTii7_phFyESndoIcs9Z4kAGv5Uta5n-1AelSUOg-6zLSjkey_IsMErA_Whef_mqZO8CQI2UmBhcZpy51IuCYPB4k7YdL7raM9UdywcP-5O31lbZR8GNPNXA1gQy-Ay9luW-ssGTJFnK3my4szlj_dbqpFq');
                 },
-                volume: 0.5
+                volume: 0.8
             });
 
             // Called when connected to the player created beforehand successfully
@@ -138,6 +139,7 @@ $album_items = json_encode($data['album_items']);
                     });
                     $('#btn-play').removeClass('resume');
                 } else {
+                    console.log(1234)
                     const play = ({
                         spotify_uri,
                         playerInstance: {
@@ -193,6 +195,7 @@ $album_items = json_encode($data['album_items']);
             });
             $('#btn-play').on('click', function() {
                 playSong();
+
             });
             $('#btn-pause').on('click', function() {
                 pauseSong();
