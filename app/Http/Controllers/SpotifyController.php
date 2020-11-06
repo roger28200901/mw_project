@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Aerni\Spotify\PendingRequest;
 use Illuminate\Http\Request;
 use Aerni\Spotify\Spotify;
+use Aerni\Spotify\SpotifyAuth;
 
 class SpotifyController extends Controller
 {
@@ -94,5 +95,10 @@ class SpotifyController extends Controller
         $spotify = new Spotify($defaultConfig);
 
         return $spotify->searchItems($query_string, $type)->get();
+    }
+    public function getAccessToken()
+    {
+        $spotify = new SpotifyAuth(env('SPOTIFY_CLIENT_ID'), env('SPOTIFY_CLIENT_SECRET'));
+        dd($spotify->getAccessToken());
     }
 }

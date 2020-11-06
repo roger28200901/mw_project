@@ -25,3 +25,7 @@ Route::get('searchTrack/{id}', 'SpotifyController@searchTrack');
 
 Route::get('searchAlbums/{query_string?}', 'SpotifyController@searchAlbums');
 Route::get('searchItems/{keyword}/{type}', 'SpotifyController@serachItems');
+
+// Route::get('getAccessToken', function () {
+//     return view('spotify');
+// });

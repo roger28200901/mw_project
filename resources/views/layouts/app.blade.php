@@ -143,6 +143,7 @@
             location.href = "{{ url('reveal/')}}" + '/' + x.value;
         }
     </script>
+
     @yield('script')
 </body>
 
