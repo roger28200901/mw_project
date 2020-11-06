@@ -17,9 +17,11 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('reveal', 'RevealController@index');
+Route::get('reveal/{search?}', 'RevealController@index');
 Route::get('playSong/{id}', 'RevealController@playSongPage');
 
 
 // Test Spotify 
-// Route::get('')
+Route::get('test', function () {
+    return view('spotify');
+});

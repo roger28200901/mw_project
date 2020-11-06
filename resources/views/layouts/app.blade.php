@@ -72,7 +72,7 @@
                         <label for="search-field" style="margin-right: 1rem;">
                             <i class="fa fa-search"></i>
                         </label>
-                        <input class="form-control search-field" type="search" name="search" placeholder="Search..." id="search-field"></div>
+                        <input class="form-control search-field" onsearch="searchFunction()" id="searchInput" type="search" name="search" placeholder="Search..."></div>
                 </form>
             </div>
             <!-- right side -->
@@ -122,7 +122,7 @@
                 loadingClass: 'animsition-loading',
                 loadingInner: '', // e.g '<img src="loading.svg" />'
                 timeout: false,
-                timeoutCountdown: 5000,
+                timeoutCountdown: 3000,
                 onLoadEvent: true,
                 browser: ['animation-duration', '-webkit-animation-duration'],
                 // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
@@ -134,7 +134,14 @@
                     window.location.href = url;
                 }
             });
+
+
         });
+
+        function searchFunction() {
+            var x = document.getElementById("searchInput");
+            location.href = "{{ url('reveal/')}}" + '/' + x.value;
+        }
     </script>
     @yield('script')
 </body>

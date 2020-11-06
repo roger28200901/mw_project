@@ -89,7 +89,7 @@
         var player = new Spotify.Player({
             name: 'Roger ',
             getOAuthToken: callback => {
-                callback('BQDB0da-VolgZT4GLpdOga_phUQNNU2bwqtC-gLBTxfpJgWWIhi6q5UoekgGUK3vc6ml4aHzO5mktHEAKBWNg2KZSJSnXgPl5MxNbVm1ibLo7nrnnyK1PgoJNZ8xeKaxAp_ywYv1J9tyICouqiMVReUIVkT6lFH-Ufm8');
+                callback('BQCWjSLpOpJLnGppzU5uu_VGuNXUMDelFH2p97a2x9YTcTRCY-_nQwA4LSVH-wktl3XGNWAJlpKAFPjia7ipeUocx9O3B9ZRXB_RptSHSPPl0bGB-p2ppXoTAtq0p73JVj9jcpzz6Z-gyCxi5UQvFjthV_InFg6Whh9P');
             },
             volume: 0.5
         });

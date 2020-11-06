@@ -51,19 +51,20 @@
     <footer>
         <div class="footer-left flex">
             <div class="footer-image">
-                <img src="{{ $data['album']['image']['url'] }}" width="60" height="60" alt="">
+                <img id="little-image" src="{{ $data['album']['image']['url'] }}" width="60" height="60" alt="">
             </div>
             <div class="footer-message">
-                <p>{{ $data['name'] }}</p>
-                <p>{{ $data['artists'][0]['name'] }}</p>
+                <p id="little-song-topic">{{ $data['name'] }}</p>
+                <p id="little-song-artist">{{ $data['artists'][0]['name'] }}</p>
             </div>
         </div>
         <div class="footer-right flex">
-            <img src="{{ asset('img/shuffle.@2x.png') }}" alt="">
-            <img src="{{ asset('img/previous.@2x.png') }}" alt="">
-            <img src="{{ asset('img/play.@2x.png') }}" alt="">
-            <img src="{{ asset('img/next.@2x.png') }}" alt="">
-            <img src="{{ asset('img/repeat.@2x.png') }}" alt="">
+            <img src="{{ asset('img/shuffle.@2x.png') }}" id="btn-shuffle" alt="">
+            <img src="{{ asset('img/previous.@2x.png') }}" id="btn-previousSong" alt="">
+            <img src="{{ asset('img/play.@2x.png') }}" id="btn-play" alt="">
+            <img src="{{ asset('img/stop@2x.png') }}" id="btn-pause" alt="" class="hide">
+            <img src="{{ asset('img/next.@2x.png') }}" id="btn-nextSong" alt="">
+            <img src="{{ asset('img/repeat.@2x.png') }}" id="btn-repeat" alt="">
         </div>
     </footer>
     <script>
@@ -79,11 +80,145 @@
 
 
 </body>
-
-
+@php
+$album_items = json_encode($data['album_items']);
+@endphp
 @section('script')
+<!-- Scripts -->
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
+    $(document).ready(function() {
+        // get now uri
+        let uri = "{{ $data['uri'] }}"
+        let album_items = "{{ $album_items }}";
+        album_items = JSON.parse(album_items.replace(/&quot;/g, '"'));
+        let now_number = album_items.find(item => item.uri == uri).track_number;
+        let max_number = album_items.length;
+        let min_number = 1;
 
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            // Define the Spotify Connect device, getOAuthToken has an actual token 
+            // hardcoded for the sake of simplicity
+            var player = new Spotify.Player({
+                name: 'Roger ',
+                getOAuthToken: callback => {
+                    callback('BQDsnj6iT-Bp8Ns7PPrEKZrL5_xpkekm1g0VpJeUvSeF3dwk0IdFiHJhQbJw0lx038moIXwn9nbltC1N7aVNpNIaUrJkvdt7d84eCSPfslYv8tjqeizNLnK81ap2Gqas6Ty5HVlQ_RY962sosymx6QPM_EPYwrOXIHZ4');
+                },
+                volume: 0.5
+            });
+
+            // Called when connected to the player created beforehand successfully
+            player.addListener('ready', ({
+                device_id
+            }) => {
+                console.log('Ready with Device ID', device_id);
+
+            });
+
+
+
+            // Connect to the player created beforehand, this is equivalent to 
+            // creating a new device which will be visible for Spotify Connect
+            player.connect();
+
+            function playSong() {
+                $('#btn-play').addClass('hide')
+                $('#btn-pause').removeClass('hide')
+                // Chagne left image and content
+                let topic = album_items.find(item => item.uri == uri).name;
+                let artist = album_items.find(item => item.uri == uri).artists[0].name;
+                $('#little-song-topic').html(topic);
+                $('#little-song-artist').html(artist);
+
+                // Play Song API
+                if ($('#btn-play').hasClass('resume')) {
+                    // resume Song API
+                    player.resume().then(() => {
+                        console.log('Resumed!');
+                    });
+                    $('#btn-play').removeClass('resume');
+                } else {
+                    const play = ({
+                        spotify_uri,
+                        playerInstance: {
+                            _options: {
+                                getOAuthToken,
+                                id
+                            }
+                        }
+                    }) => {
+                        getOAuthToken(access_token => {
+                            fetch(`https://api.spotify.com/v1/me/player/play?device_id=${id}`, {
+                                method: 'PUT',
+                                body: JSON.stringify({
+                                    uris: [spotify_uri]
+                                }),
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Authorization': `Bearer ${access_token}`
+                                },
+                            });
+                        });
+                    };
+
+                    play({
+                        playerInstance: player,
+                        spotify_uri: uri,
+                    });
+                }
+
+            }
+
+            function pauseSong() {
+                $('#btn-pause').addClass('hide')
+                $('#btn-play').removeClass('hide')
+                $('#btn-play').addClass('resume')
+                player.pause().then(() => {
+                    console.log('Paused!');
+                });
+            }
+
+            function shuffleSong() {
+                let n = parseInt((Math.random() * album_items.length) + 1);
+                now_number = n;
+                uri = album_items.find(item => item.track_number == n).uri;
+                playSong();
+            }
+
+            function repeatSong() {
+                playSong();
+            }
+            $('#btn-shuffle').on('click', function() {
+                shuffleSong();
+            });
+            $('#btn-play').on('click', function() {
+                playSong();
+            });
+            $('#btn-pause').on('click', function() {
+                pauseSong();
+            });
+
+            $('#btn-nextSong').on('click', function() {
+                if (now_number + 1 <= max_number) {
+                    now_number += 1;
+                    uri = album_items.find(item => item.track_number == now_number).uri;
+                    playSong();
+                }
+            });
+
+            $('#btn-previousSong').on('click', function() {
+                if (now_number - 1 >= 1) {
+                    now_number -= 1;
+                    uri = album_items.find(item => item.track_number == now_number).uri;
+                    playSong();
+                }
+            });
+
+            $('#btn-repeat').on('click', function() {
+                repeatSong();
+            });
+        };
+    });
 </script>
 @endsection
 

@@ -9,10 +9,10 @@ use App\Http\Controllers\SpotifyController;
 class RevealController extends Controller
 {
     //
-    public function index()
+    public function index($search = "lady+gaga")
     {
         $spotifyController = new SpotifyController();
-        $array = $spotifyController->searchTracks("lady gaga");
+        $array = $spotifyController->searchTracks($search);
         return view('reveal')->with('datas', $array);
     }
     public function playSongPage($id)
