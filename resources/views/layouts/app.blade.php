@@ -53,13 +53,13 @@
                 <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button> -->
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link" href="#">Help</a>
+                        <a class="nav-link" href="https://github.com/roger28200901/mw_project">Help</a>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">
                             Download
                         </a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        <!-- <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div> -->
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" href="#">Sign up</a>
@@ -80,7 +80,7 @@
 
             <ul class="ul-icon flex justify-center align-center">
                 <li class="li-icon">
-                    <a href="#">
+                    <a href="https://www.facebook.com/profile.php?id=100001055047638">
                         <i class="fab fa-facebook-f icon"></i>
                     </a>
                 </li>
@@ -90,12 +90,12 @@
                     </a>
                 </li>
                 <li class="li-icon">
-                    <a href="#">
+                    <a href="https://www.instagram.com/chen.yunhong/">
                         <i class="fab fa-instagram icon"></i>
                     </a>
                 </li>
                 <li class="li-icon">
-                    <a href="#">
+                    <a href="https://www.google.com/">
                         <i class="fab fa-google icon"></i>
                     </a>
                 </li>

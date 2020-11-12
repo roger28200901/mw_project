@@ -96,14 +96,14 @@ $album_items = json_encode($data['album_items']);
         let now_number = album_items.find(item => item.uri == uri).track_number;
         let max_number = album_items.length;
         let min_number = 1;
-
+        let token = "BQB490Y-BKjBzzbY_68hfQRj_qZsyHRwhkwOOD3v8LE7ZfTIhnMBnLI2_KayrM0OYPoTpe9luVJ-laSAQaM5tzhhjO_V2m7_2iZY1KI96VWOe9O17JdKeir431Rm1kUbG_olXoKxgXDWTLWWOiwckJ5TnbDQt9fV94yR" //請輸入你的token
         window.onSpotifyWebPlaybackSDKReady = () => {
             // Define the Spotify Connect device, getOAuthToken has an actual token 
             // hardcoded for the sake of simplicity
             var player = new Spotify.Player({
                 name: 'Roger ',
                 getOAuthToken: callback => {
-                    callback('BQCUnEcUidTii7_phFyESndoIcs9Z4kAGv5Uta5n-1AelSUOg-6zLSjkey_IsMErA_Whef_mqZO8CQI2UmBhcZpy51IuCYPB4k7YdL7raM9UdywcP-5O31lbZR8GNPNXA1gQy-Ay9luW-ssGTJFnK3my4szlj_dbqpFq');
+                    callback(token);
                 },
                 volume: 0.8
             });

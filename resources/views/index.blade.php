@@ -18,6 +18,7 @@
             <img src="{{ asset('img/play.@2x.png') }}" id="play-button" width="49" height="49" alt="" onclick="location.href='reveal' ">
         </div>
     </div>
+    <img id="background-img" src="{{ asset('img/background.png') }}" alt="">
     @endsection
 
     @section('script')

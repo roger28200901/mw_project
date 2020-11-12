@@ -10,6 +10,14 @@ body {
     margin: 0;
 }
 
+#background-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+
 #container {
     width: inherit;
     height: inherit;
@@ -145,13 +153,14 @@ main {
 }
 
 #index-middle-container>img {
-    margin-top: 10%;
+    margin-top: 15%;
 }
 
 #play-button {
     position: absolute;
-    top: 280px;
+    top: 270px;
     cursor: pointer;
+    z-index: 999;
 }
 
 
