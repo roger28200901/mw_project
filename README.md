@@ -7,6 +7,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## MW_Project
+
+使用教學：git pull專案之後請在根目錄執行composer install、php artisan serve啟動server，若要使用web sdk api 播放歌曲，請先至https://developer.spotify.com/documentation/web-playback-sdk/quick-start/ 取得token，並複製貼上至resources/views/playSong.blade.php底下script範圍的token變數。
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -60,6 +64,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## MW_Project
 
-blablablabalblablabla
