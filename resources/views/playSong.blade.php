@@ -33,7 +33,7 @@
                     $i = 1;
                     @endphp
                     @foreach($data['album_items'] as $item)
-                    <tr>
+                    <tr class="song-list" set_uri="{{ $item['uri'] }}">
                         <td>{{ $i }}</td>
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['artists'][0]['name'] }}</td>
@@ -91,10 +91,13 @@ $album_items = json_encode($data['album_items']);
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
 <script>
+    let uri = "{{ $data['uri'] }}"
+    let album_items = "{{ $album_items }}";
+
+
     $(document).ready(function() {
         // get now uri
-        let uri = "{{ $data['uri'] }}"
-        let album_items = "{{ $album_items }}";
+
         album_items = JSON.parse(album_items.replace(/&quot;/g, '"'));
         let now_number = album_items.find(item => item.uri == uri).track_number;
         let max_number = album_items.length;
@@ -140,6 +143,7 @@ $album_items = json_encode($data['album_items']);
                 device_id
             }) => {
                 console.log('Ready with Device ID', device_id);
+                playSong();
 
             });
 
@@ -148,6 +152,8 @@ $album_items = json_encode($data['album_items']);
             // Connect to the player created beforehand, this is equivalent to 
             // creating a new device which will be visible for Spotify Connect
             player.connect();
+
+
 
             function playSong() {
                 $('#btn-play').addClass('hide')
@@ -195,6 +201,12 @@ $album_items = json_encode($data['album_items']);
                     });
                 }
 
+            }
+
+            function setSong(set_uri) {
+                uri = set_uri
+                now_number = album_items.find(item => item.uri == uri).track_number;
+                playSong()
             }
 
             function pauseSong() {
@@ -246,6 +258,10 @@ $album_items = json_encode($data['album_items']);
             $('#btn-repeat').on('click', function() {
                 repeatSong();
             });
+
+            $('.song-list').on('click', function() {
+                setSong($(this).attr('set_uri'))
+            })
         };
     });
 </script>

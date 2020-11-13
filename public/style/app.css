@@ -383,6 +383,14 @@ ul {
     width: 60%;
 }
 
+.song-list {
+    cursor: pointer;
+}
+
+.song-list:hover {
+    background: #530707;
+}
+
 footer {
     position: absolute;
     margin: 0;
