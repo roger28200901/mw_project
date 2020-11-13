@@ -56,6 +56,7 @@
                 "scrollCollapse": true,
                 "scrollY": "250px",
             });
+
         });
     </script>
     @endsection
@@ -96,7 +97,25 @@ $album_items = json_encode($data['album_items']);
         let now_number = album_items.find(item => item.uri == uri).track_number;
         let max_number = album_items.length;
         let min_number = 1;
-        let token = "BQB490Y-BKjBzzbY_68hfQRj_qZsyHRwhkwOOD3v8LE7ZfTIhnMBnLI2_KayrM0OYPoTpe9luVJ-laSAQaM5tzhhjO_V2m7_2iZY1KI96VWOe9O17JdKeir431Rm1kUbG_olXoKxgXDWTLWWOiwckJ5TnbDQt9fV94yR" //請輸入你的token
+        $.ajax({
+            url: 'https://accounts.spotify.com/authorize',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+            },
+            method: 'GET',
+            data: {
+                client_id: '5390f06c359b43519969161f3d5cbbd3',
+                response_type: 'token',
+                redirect_uri: 'http://localhost:8000',
+                scope: 'streaming%20user-read-email%20user-modify-playback-state%20user-read-private'
+            },
+            success: function(response) {
+                console.log(response)
+            }
+        })
+
+        let token = "BQDwBC4pD6rstYHlsi8FnEJyQSVX8Z5YqDF6p5eWNax_zUkUr5NgnbYQMWHnCX6tw5EpRgHtpC_F6xHhhQ-cYRJ5-PEceWLLACmCQd6byBtevGVT14MvyyWz1uSVekJQQgxCVQU1m8XhIcJBbbpcYZlkhaGpl8YesDd9" //請輸入你的token
         window.onSpotifyWebPlaybackSDKReady = () => {
             // Define the Spotify Connect device, getOAuthToken has an actual token 
             // hardcoded for the sake of simplicity

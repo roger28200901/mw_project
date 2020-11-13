@@ -18,10 +18,10 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('reveal/{search?}', 'RevealController@index');
-Route::get('playSong/{id}', 'RevealController@playSongPage');
+Route::middleware('cors')->group(function () {
+    Route::get('playSong/{id}', 'RevealController@playSongPage');
+});
 
 
 // Test Spotify 
-Route::get('test', function () {
-    return view('spotify');
-});
+Route::get('test', 'RevealController@test');
