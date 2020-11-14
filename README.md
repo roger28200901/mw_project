@@ -9,7 +9,11 @@
 
 ## MW_Project
 
+專案主要需求：composer管理套件。
+
 使用教學：git pull專案之後請在根目錄執行composer install、php artisan serve啟動server，若要使用web sdk api 播放歌曲，請先至https://developer.spotify.com/documentation/web-playback-sdk/quick-start/ 取得token，並複製貼上至resources/views/playSong.blade.php底下script範圍的token變數。
+
+2020/11/15 Update:目前以進入首頁後取得token的方式作為基本，使用帳號必須為premium帳號，才可以使用功能。
 
 ## About Laravel
 
