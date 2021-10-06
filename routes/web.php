@@ -22,5 +22,5 @@ Route::middleware('cors')->group(function () {
     Route::get('playSong/{id}', 'RevealController@playSongPage');
 });
 
-// Test Spotify 2
+// Test Spotify
 Route::get('test', 'RevealController@test');
