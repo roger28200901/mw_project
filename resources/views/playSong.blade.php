@@ -126,7 +126,11 @@ $album_items = json_encode($data['album_items']);
             if (parts.length === 2) return parts.pop().split(';').shift();
         }
 
+<<<<<<< HEAD
+        let token = "BQBQuHzuz-cTnDefqwSA20m87aekmTqkRmR0QTRiiZpW9jpBx5EbhYXOmXkq-KlplpB3P1eOs5zDOxVprT12_CuFcjtClcMyiITEK1UUUq3TXHdIUaLDR68Kp69RvMCwLgkp2jefAvDIjVIMpVTUAIHwQQqgPhfc5k60-zg5IQMHPpkZAXzs6Bl_MB2kFHIa-JN8wjvBTCnCvK7HnRjG";
+=======
         let token = getCookie("_token");
+>>>>>>> origin/master
         window.onSpotifyWebPlaybackSDKReady = () => {
             // Define the Spotify Connect device, getOAuthToken has an actual token 
             // hardcoded for the sake of simplicity
